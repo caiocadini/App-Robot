@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:app_robo/calendario.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sizer/sizer.dart';
@@ -57,6 +58,12 @@ class HomePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => const LoginPage()),
+                            );
+                          },
                           child: Container(
                               decoration: const BoxDecoration(
                                 borderRadius:
