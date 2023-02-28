@@ -53,19 +53,14 @@ class LoginPageState extends State<LoginPage> {
                     hintStyle: TextStyle(color: Colors.white),
                   ),
                 ),
-                const Align(
-                  alignment: FractionalOffset.bottomCenter,
-                  child: OutlinedButton(
-                      onPressed: () {
-                        /*
-                      Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => const HorarioPage()),
-                      )
-                      */
-                        debugPrint('Clicou');
-                      },
-                      child: Text('entrar com login do SIGA')),
-                )
+                // const Align(
+                //   alignment: FractionalOffset.bottomCenter,
+                //   child: OutlinedButton(
+                //       onPressed: () => AlertDialog(
+                //         title: 'Teste',
+                //       )
+                //       child: Text('entrar com login do SIGA')),
+                // )
               ],
             )));
   }

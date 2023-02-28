@@ -1,9 +1,10 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sizer/sizer.dart';
+
+
 import 'informacoes.dart';
+import 'src/components/cards/elevated_card.dart';
 
 //Caminhos
 String imgBackground = 'assets/menu_background.jpg';
@@ -26,9 +27,17 @@ class MyApp extends StatelessWidget {
       return MaterialApp(
         title: 'Aplicação Robô',
         theme: ThemeData(
+          brightness: Brightness.light,
           primarySwatch: Colors.blue,
           useMaterial3: true,
         ),
+        darkTheme: ThemeData(
+          brightness: Brightness.dark,
+          primarySwatch: Colors.indigo,
+          useMaterial3: true,
+        ),
+        themeMode: ThemeMode.system,
+        debugShowCheckedModeBanner: false,
         home: const HomePage(title: 'Flutter Demo Home Page'),
       );
     });
@@ -53,110 +62,80 @@ class HomePage extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        GestureDetector(
-                          child: Container(
-                              decoration: const BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                                color: Color.fromARGB(255, 37, 35, 42),
-                              ),
-                              height: 10.h,
-                              width: 30.w,
-                              child: const Center(
-                                child: Text(
-                                  'Horário de Aula',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              )),
+                        // ignore: prefer_const_constructors
+                        Text('Olá, visitante!',
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                         ),
-                        Container(
-                            decoration: const BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              color: Color.fromARGB(255, 37, 35, 42),
-                            ),
-                            height: 10.h,
-                            width: 30.w,
-                            child: const Center(
-                              child: Text(
-                                'Explorar o DC',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            )),
-                        Container(
-                            decoration: const BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              color: Color.fromARGB(255, 37, 35, 42),
-                            ),
-                            height: 10.h,
-                            width: 30.w,
-                            child: const Center(
-                              child: Text(
-                                'Xadrez',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            )),
-                      ],
+
+                        // ignore: prefer_const_constructors
+                        Text(
+                          'Com o que posso te ajudar?',
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(fontWeight: FontWeight.w300),
+                        ),],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Container(
-                            decoration: const BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              color: Color.fromARGB(255, 37, 35, 42),
-                            ),
-                            height: 10.h,
-                            width: 30.w,
-                            child: const Center(
-                              child: Text(
-                                'Grupos de Extensão',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            )),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).push(
+                        ElevatedCard(
+                          cardText: 'Horário de Aula',
+                          onTap: () => debugPrint('Horário de Aula'),
+                        ),
+                        ElevatedCard(
+                          cardText: 'Explorar o DC',
+                          onTap: () => debugPrint('Explorar o DC'),
+                        ),
+                        ElevatedCard(
+                          cardText: 'Xadrez',
+                          onTap: () => debugPrint('Xadrez'),
+                        ),
+                      ],
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        ElevatedCard(
+                          cardText: 'Grupos de Extensão',
+                          onTap: () => debugPrint('Grupos de Extensão'),
+                        ),
+                        
+                        ElevatedCard(
+                          cardText: 'Informações',
+                          onTap: () => Navigator.of(context).push(
                               MaterialPageRoute(
                                   builder: (context) => const InfoPage()),
-                            );
-                          },
-                          child: Container(
-                              decoration: const BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                                color: Color.fromARGB(255, 37, 35, 42),
-                              ),
-                              height: 10.h,
-                              width: 30.w,
-                              child: const Center(
-                                child: Text(
-                                  'Informações',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              )),
-                        ),
-                        Container(
-                            decoration: const BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              color: Color.fromARGB(255, 37, 35, 42),
                             ),
-                            height: 10.h,
-                            width: 30.w,
-                            child: const Center(
-                              child: Text(
-                                'Configurações',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            )),
+                        ),
+                        
+                        ElevatedCard(
+                          cardText: 'Configurações',
+                          onTap: () => debugPrint('Configurações'),
+                        ),
                       ],
-                    )
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        FloatingActionButton.extended(
+                          onPressed: () => debugPrint('Ver mais'),
+                          label: const Text('Ver mais'),
+                          icon: const Icon(Icons.expand_more, size: 14),
+                          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(200))),
+                          extendedTextStyle: const TextStyle(
+                            fontSize: 12
+                          ),
+                        )
+                      ],
+                      )
                   ],
                 ))));
   }
