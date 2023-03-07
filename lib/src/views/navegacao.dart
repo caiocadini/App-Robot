@@ -1,4 +1,4 @@
-import 'package:app_robo/navigation_message.dart';
+import 'package:app_robo/src/http/navigation_message.dart';
 import 'package:flutter/material.dart';
 
 String imgBackground = 'assets/menu_background.jpg';

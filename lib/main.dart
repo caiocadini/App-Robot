@@ -1,15 +1,13 @@
-import 'dart:ffi';
-import 'package:app_robo/navigation_message.dart';
-
-import 'navegacao.dart';
-import 'package:app_robo/calendario.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sizer/sizer.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
-
-import 'informacoes.dart';
-import 'src/components/cards/elevated_card.dart';
+import 'package:app_robo/src/views/navegacao.dart';
+import 'package:app_robo/src/views/calendario.dart';
+import 'package:app_robo/src/views/informacoes.dart';
+import 'package:app_robo/src/components/cards/elevated_card.dart';
 
 //Caminhos
 String imgBackground = 'assets/menu_background.jpg';
@@ -50,8 +48,20 @@ class MyApp extends StatelessWidget {
 }
 
 //Home Page
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key, required String title});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    initializeDateFormatting('pt_BR').then((value) => debugPrint(Intl.getCurrentLocale()));
+    
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,21 +79,17 @@ class HomePage extends StatelessWidget {
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      // ignore: prefer_const_literals_to_create_immutables
-                      children: [
-                        // ignore: prefer_const_constructors
+                      children: const [
                         Text('Olá, visitante!',
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                         ),
-
-                        // ignore: prefer_const_constructors
                         Text(
                           'Com o que posso te ajudar?',
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(fontWeight: FontWeight.w300),
+                          style: TextStyle(fontWeight: FontWeight.w300),
                         ),],
                     ),
                     Row(
@@ -136,20 +142,20 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        FloatingActionButton.extended(
-                          onPressed: () => debugPrint('Ver mais'),
-                          label: const Text('Ver mais'),
-                          icon: const Icon(Icons.expand_more, size: 14),
-                          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(200))),
-                          extendedTextStyle: const TextStyle(
-                            fontSize: 12
-                          ),
-                        )
-                      ],
-                      )
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: [
+                    //     FloatingActionButton.extended(
+                    //       onPressed: () => debugPrint('Ver mais'),
+                    //       label: const Text('Ver mais'),
+                    //       icon: const Icon(Icons.expand_more, size: 14),
+                    //       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(200))),
+                    //       extendedTextStyle: const TextStyle(
+                    //         fontSize: 12
+                    //       ),
+                    //     )
+                    //   ],
+                    // )
                   ],
                 ))));
   }
