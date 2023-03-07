@@ -1,3 +1,8 @@
+import 'dart:ffi';
+import 'package:app_robo/navigation_message.dart';
+
+import 'navegacao.dart';
+import 'package:app_robo/calendario.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sizer/sizer.dart';
@@ -85,12 +90,22 @@ class HomePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         ElevatedCard(
-                          cardText: 'Horário de Aula',
-                          onTap: () => debugPrint('Horário de Aula'),
+                          cardText: 'Eventos',
+                          onTap: () => {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => const CalendarioPage()),
+                            );
+                          },
                         ),
                         ElevatedCard(
                           cardText: 'Explorar o DC',
-                          onTap: () => debugPrint('Explorar o DC'),
+                          onTap: () => {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => const NavegacaoPage()),
+                            );
+                          },
                         ),
                         ElevatedCard(
                           cardText: 'Xadrez',
@@ -98,7 +113,6 @@ class HomePage extends StatelessWidget {
                         ),
                       ],
                     ),
-
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
