@@ -1,5 +1,7 @@
 import 'dart:ffi';
+import 'package:app_robo/navigation_message.dart';
 
+import 'navegacao.dart';
 import 'package:app_robo/calendario.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -61,7 +63,7 @@ class HomePage extends StatelessWidget {
                           onTap: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                  builder: (context) => const LoginPage()),
+                                  builder: (context) => const CalendarioPage()),
                             );
                           },
                           child: Container(
@@ -74,25 +76,33 @@ class HomePage extends StatelessWidget {
                               width: 30.w,
                               child: const Center(
                                 child: Text(
-                                  'Horário de Aula',
+                                  'Evento',
                                   style: TextStyle(color: Colors.white),
                                 ),
                               )),
                         ),
-                        Container(
-                            decoration: const BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)),
-                              color: Color.fromARGB(255, 37, 35, 42),
-                            ),
-                            height: 10.h,
-                            width: 30.w,
-                            child: const Center(
-                              child: Text(
-                                'Explorar o DC',
-                                style: TextStyle(color: Colors.white),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => const NavegacaoPage()),
+                            );
+                          },
+                          child: Container(
+                              decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                                color: Color.fromARGB(255, 37, 35, 42),
                               ),
-                            )),
+                              height: 10.h,
+                              width: 30.w,
+                              child: const Center(
+                                child: Text(
+                                  'Explorar o DC',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              )),
+                        ),
                         Container(
                             decoration: const BoxDecoration(
                               borderRadius:
