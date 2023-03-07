@@ -95,7 +95,7 @@ class HomePage extends StatelessWidget {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                   builder: (context) => const CalendarioPage()),
-                            );
+                            )
                           },
                         ),
                         ElevatedCard(
@@ -104,7 +104,7 @@ class HomePage extends StatelessWidget {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                   builder: (context) => const NavegacaoPage()),
-                            );
+                            )
                           },
                         ),
                         ElevatedCard(

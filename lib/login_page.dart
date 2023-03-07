@@ -1,11 +1,9 @@
-
-/*
 import 'package:flutter/material.dart';
 import 'calendario.dart';
 
-//Caminhos
+// Caminhos
 String imgBackground = 'assets/menu_background.jpg';
-*/
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
