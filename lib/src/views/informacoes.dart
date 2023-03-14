@@ -32,16 +32,37 @@ class InfoPage extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                   color: Color.fromARGB(255, 37, 35, 42),
                 ),
-                child: Column(
-                  children: const [
-                    Text(
-                      'Sobre mim e o meu sistema!',
-                      style: TextStyle(fontSize: 25, color: Colors.white),
+                child: ListView(
+                  shrinkWrap: true,
+                  children: [
+                    const Align(
+                      alignment: Alignment.topCenter,
+                      child: Text(
+                        'Sobre mim e o meu sistema!',
+                        style: TextStyle(fontSize: 25, color: Colors.white),
+                      ),
                     ),
-                    Text(
-                      'Olá, eu sou o robô do DC, estou aqui para lhe ajudar em tudo que foi necessário. Você pode consultar os horários de aula, explorar o mapa do DC, aprender mais sobre os grupos de extensão e até jogar xadrez comigo :)), espero que você se divirta',
-                      style: TextStyle(color: Colors.white),
+                    const Padding(
+                      padding: EdgeInsets.all(32.0),
+                      child: Text(
+                        'Olá, eu sou o robô do DC, estou aqui para lhe ajudar em tudo que foi necessário. Você pode consultar eventos que irão acontecer no departamento e explorar o mapa do DC, espero que você se divirta',
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      // ignore: prefer_const_literals_to_create_immutables
+                      child: Column(children: [
+                        const Center(
+                          child: Text('Alunos:'),
+                        ),
+                        const Text('Caio Cadini'),
+                        const Text('Rodrigo Coffani'),
+                        const Text('Lucca Couto'),
+                        const Text('Lucas Abbiati'),
+                        const Text('Heitor Colichio')
+                      ]),
+                    )
                   ],
                 )),
           ),

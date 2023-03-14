@@ -25,7 +25,7 @@ class Evento {
 
 Future<List<Evento>> fetchResponse() async {
   final resposta = await http.get(Uri.parse(
-      'https://api.dc.ufscar.br/api/eventos?_sort=Data:desc&_limit=15'));
+      'https://api.dc.ufscar.br/api/eventos?_sort=Data:desc&_limit=10'));
 
   List<Evento> listaRetorno = [];
   if (resposta.statusCode == 200) {

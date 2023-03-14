@@ -8,8 +8,6 @@ import 'package:intl/intl.dart';
 String imgBackground = 'assets/menu_background.jpg';
 String imgMateria = 'assets/media.png';
 
-
-
 // CALENDÁRIO//
 class CalendarioPage extends StatefulWidget {
   const CalendarioPage({super.key});
@@ -21,6 +19,7 @@ class CalendarioPage extends StatefulWidget {
 }
 
 class CalendarioPageState extends State<CalendarioPage> {
+  final df = DateFormat('dd/MM/yyyy');
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -49,7 +48,7 @@ class CalendarioPageState extends State<CalendarioPage> {
                     color: Colors.white,
                   ),
                 ),
-                const SegmentedButtonSingleChoice(values: []),
+                //const SegmentedButtonSingleChoice(values: []),
                 Expanded(
                   child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -73,7 +72,8 @@ class CalendarioPageState extends State<CalendarioPage> {
                                   debugPrint(Intl.getCurrentLocale());
                                   return ElevatedCard(
                                     title: evento.titulo,
-                                    subTitle: "${DateFormat.MMMEd().format(DateTime.parse(evento.dia)).toString()} - ${DateFormat.Hm().format(DateTime.parse(evento.dia)).toString()}",
+                                    subTitle:
+                                        "${df.format(DateTime.parse(evento.dia)).toString()} - ${DateFormat.Hm().format(DateTime.parse(evento.dia)).toString()}",
                                     // cardText: evento.descricao,
                                     cardText: evento.local,
                                     height: 180,
