@@ -30,11 +30,18 @@ Future<List<Evento>> fetchResponse() async {
   List<Evento> listaRetorno = [];
   if (resposta.statusCode == 200) {
     final jsonObject = await jsonDecode(resposta.body);
+    
     for (var jsonData in jsonObject) {
       listaRetorno.add(Evento.fromJson(jsonData));
     }
 
-    return listaRetorno;
+    List<Evento> filtered = [];
+    filtered.addAll(listaRetorno);
+    filtered.retainWhere((element) {
+      return DateTime.parse(element.dia).isAfter(DateTime.now());
+    });
+    
+    return filtered;
   } else {
     throw Exception('Failed to obtain information');
   }

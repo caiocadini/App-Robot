@@ -1,4 +1,3 @@
-import 'package:app_robo/src/components/buttons/segmented_button_single_choice.dart';
 import 'package:app_robo/src/components/cards/elevated_card.dart';
 import 'package:flutter/material.dart';
 import 'package:app_robo/src/http/events_request.dart';
@@ -44,7 +43,8 @@ class CalendarioPageState extends State<CalendarioPage> {
                 const Text(
                   'Eventos do DC',
                   style: TextStyle(
-                    fontSize: 40,
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
                 ),
@@ -63,93 +63,34 @@ class CalendarioPageState extends State<CalendarioPage> {
                                     )));
                           } else {
                             List<Evento> eventos = dados.data as List<Evento>;
+                            if (eventos.isEmpty) {
+                              return const Center(
+                                child: Text('Parece que ainda não há nenhum evento marcado...\nVolte outro dia!',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.normal,
+                                    fontStyle: FontStyle.italic
+                                  ),
+                                )
+                              );
+                            }
                             return ListView.builder(
-                                itemCount: eventos.length,
-                                scrollDirection: Axis.horizontal,
-                                shrinkWrap: true,
-                                itemBuilder: (context, index) {
-                                  Evento evento = eventos[index];
-                                  debugPrint(Intl.getCurrentLocale());
-                                  return ElevatedCard(
-                                    title: evento.titulo,
-                                    subTitle:
-                                        "${df.format(DateTime.parse(evento.dia)).toString()} - ${DateFormat.Hm().format(DateTime.parse(evento.dia)).toString()}",
-                                    // cardText: evento.descricao,
-                                    cardText: evento.local,
-                                    height: 180,
-                                    width: 160,
-                                    // child: Padding(
-                                    //   padding: const EdgeInsets.all(8.0),
-                                    //   child: Container(
-                                    //     height: (60 /
-                                    //         800 *
-                                    //         MediaQuery.of(context).size.height),
-                                    //     width: (250 /
-                                    //         1290 *
-                                    //         MediaQuery.of(context).size.width),
-                                    //     decoration: const BoxDecoration(
-                                    //       color: Color.fromARGB(255, 37, 35, 42),
-                                    //       borderRadius: BorderRadius.all(
-                                    //           Radius.circular(20)),
-                                    //     ),
-                                    //     child: ListView(
-                                    //       children: [
-                                    //         Align(
-                                    //           alignment: Alignment.topCenter,
-                                    //           child: Padding(
-                                    //             padding: const EdgeInsets.only(
-                                    //                 bottom: 8.0,
-                                    //                 top: 2.0,
-                                    //                 left: 2.0),
-                                    //             child: SizedBox(
-                                    //               child: Center(
-                                    //                 child: Text(
-                                    //                   evento.titulo,
-                                    //                   style: const TextStyle(
-                                    //                     color: Colors.white,
-                                    //                     fontFamily: 'Raleway',
-                                    //                   ),
-                                    //                 ),
-                                    //               ),
-                                    //             ),
-                                    //           ),
-                                    //         ),
-                                    //         /*
-                                    //         Align(
-                                    //           alignment: Alignment.center,
-                                    //           child: Image.asset(
-                                    //             imgMateria,
-                                    //           ),
-                                    //         ),
-                                    //         */
-                                    //         Padding(
-                                    //           padding: const EdgeInsets.only(
-                                    //               top: 8.0,
-                                    //               left: 2.0,
-                                    //               bottom: 8.0),
-                                    //           child: Text(evento.dia,
-                                    //               style: const TextStyle(
-                                    //                 color: Colors.white,
-                                    //                 fontSize: 10,
-                                    //                 fontFamily: 'Raleway',
-                                    //               )),
-                                    //         ),
-                                    //         Padding(
-                                    //           padding: const EdgeInsets.only(
-                                    //             left: 2.0,
-                                    //           ),
-                                    //           child: Text(evento.local,
-                                    //               style: const TextStyle(
-                                    //                   color: Colors.white)),
-                                    //         )
-                                    //       ],
-                                    //     ),
-                                    //   ),
-                                    // ),
-                                  );
-                                });
+                              itemCount: eventos.length,
+                              scrollDirection: Axis.horizontal,
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) {
+                                Evento evento = eventos[index];
+                                return ElevatedCard(
+                                  title: evento.titulo,
+                                  subTitle: evento.descricao,
+                                  // cardText: evento.descricao,
+                                  cardText: "${DateFormat.yMd('pt_BR').format(DateTime.parse(evento.dia)).toString()} - ${DateFormat.Hm().format(DateTime.parse(evento.dia)).toString()} ${evento.local}",
+                                  height: 180,
+                                  width: 160,
+                                );
+                              });
                           }
-                          ;
                         },
                       )),
                 ),
