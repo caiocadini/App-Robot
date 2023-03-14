@@ -56,20 +56,28 @@ class NavegacaoPage extends StatelessWidget {
                 return SizedBox(
                     height: 400 / 800 * MediaQuery.of(context).size.height,
                     width: 350 / 1280 * MediaQuery.of(context).size.width,
-                    child: ListView(
-                      shrinkWrap: true,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: SizedBox(child: Text(message)),
-                        ),
-                        boxCreation(texto, context),
-                        ElevatedButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: const Text('Voltar'))
-                      ],
+                    child: Scrollbar(
+                      child: ListView(
+                        shrinkWrap: true,
+                        children: [
+                          Align(
+                              alignment: Alignment.topCenter,
+                              child: Text(
+                                texto.toUpperCase(),
+                                style: const TextStyle(fontSize: 25),
+                              )),
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: SizedBox(child: Text(message)),
+                          ),
+                          boxCreation(texto, context),
+                          ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text('Voltar'))
+                        ],
+                      ),
                     ));
               });
         },
