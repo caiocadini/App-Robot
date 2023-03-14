@@ -37,6 +37,7 @@ class NavegacaoPage extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           fetchNavigationResponse(texto);
+          Navigator.pop(context);
         },
         child: FilledButton(
           onPressed: () {
