@@ -1,6 +1,7 @@
 import 'package:app_robo/src/http/navigation_message.dart';
 import 'package:image/image.dart' as IMG;
 import 'package:flutter/material.dart';
+import 'package:diacritic/diacritic.dart';
 
 String imgBackground = 'assets/menu_background.jpg';
 String imgMap = 'assets/MapaPisoTerreo2022.jpg';
@@ -39,7 +40,7 @@ class NavegacaoPage extends StatelessWidget {
         },
         child: FilledButton(
           onPressed: () {
-            fetchNavigationResponse(texto);
+            fetchNavigationResponse(removeDiacritics(texto));
           },
           child: Text('Ir até $texto'),
         ),
@@ -50,43 +51,41 @@ class NavegacaoPage extends StatelessWidget {
   Widget iconInteractor(String texto, BuildContext context, String message) {
     return InkWell(
         onTap: () {
-            showDialog<String>(
-              context: context,
-              builder: (BuildContext context) => Dialog(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        texto.toUpperCase(),
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: SizedBox(child: Text(message)),
-                      ),
-                      boxCreation(texto, context),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Text('Voltar'),
-                      ),
-                    ],
-                  ),
+          showDialog<String>(
+            context: context,
+            builder: (BuildContext context) => Dialog(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      texto.toUpperCase(),
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: SizedBox(child: Text(message)),
+                    ),
+                    boxCreation(texto, context),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text('Voltar'),
+                    ),
+                  ],
                 ),
               ),
-            );
+            ),
+          );
         },
         child: Icon(
           Icons.location_on,
           color: Colors.black,
-          size: 100 / 1280 * MediaQuery.of(context).size.width,
+          size: 50 / 1280 * MediaQuery.of(context).size.width,
         ));
   }
 
@@ -104,11 +103,9 @@ class NavegacaoPage extends StatelessWidget {
                   onPressed: () => Navigator.of(context).maybePop(context),
                   icon: const Icon(Icons.arrow_back, color: Colors.white)),
               backgroundColor: Colors.white.withOpacity(0),
-              title: const Text('Explorar o DC',
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold
-                ),
+              title: const Text(
+                'Explorar o DC',
+                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
               ),
               centerTitle: true,
               bottom: const PreferredSize(
@@ -125,96 +122,96 @@ class NavegacaoPage extends StatelessWidget {
                   Image(
                       image: ResizeImage(AssetImage(imgMap),
                           width:
-                              (2384 / 1280 * MediaQuery.of(context).size.width)
+                              (1280 / 1280 * MediaQuery.of(context).size.width)
                                   .round(),
                           height:
-                              (1684 / 800 * MediaQuery.of(context).size.height)
+                              (800 / 800 * MediaQuery.of(context).size.height)
                                   .round())),
                   Positioned(
-                    top: 600 / 800 * MediaQuery.of(context).size.height,
-                    right: 170 / 1280 * MediaQuery.of(context).size.width,
+                    top: 280 / 800 * MediaQuery.of(context).size.height,
+                    right: 130 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('LIG', context, ligMessage),
                   ),
                   Positioned(
-                      bottom: 400 / 800 * MediaQuery.of(context).size.height,
-                      left: 800 / 1280 * MediaQuery.of(context).size.width,
+                      bottom: 200 / 800 * MediaQuery.of(context).size.height,
+                      left: 450 / 1280 * MediaQuery.of(context).size.width,
                       child: iconInteractor('Maker', context, makerMessage)),
                   Positioned(
-                    bottom: 400 / 800 * MediaQuery.of(context).size.height,
-                    right: 240 / 1280 * MediaQuery.of(context).size.width,
+                    bottom: 200 / 800 * MediaQuery.of(context).size.height,
+                    right: 130 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('LE-1', context, leMessage),
                   ),
                   Positioned(
-                    bottom: 400 / 800 * MediaQuery.of(context).size.height,
-                    right: 450 / 1280 * MediaQuery.of(context).size.width,
+                    bottom: 200 / 800 * MediaQuery.of(context).size.height,
+                    right: 250 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('LE-2', context, leMessage),
                   ),
                   Positioned(
-                    bottom: 400 / 800 * MediaQuery.of(context).size.height,
-                    right: 660 / 1280 * MediaQuery.of(context).size.width,
+                    bottom: 200 / 800 * MediaQuery.of(context).size.height,
+                    right: 350 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('LE-3', context, leMessage),
                   ),
                   Positioned(
-                    bottom: 400 / 800 * MediaQuery.of(context).size.height,
-                    right: 860 / 1280 * MediaQuery.of(context).size.width,
+                    bottom: 200 / 800 * MediaQuery.of(context).size.height,
+                    right: 460 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('LE-4', context, leMessage),
                   ),
                   Positioned(
-                    bottom: 400 / 800 * MediaQuery.of(context).size.height,
-                    left: 550 / 1280 * MediaQuery.of(context).size.width,
+                    bottom: 200 / 800 * MediaQuery.of(context).size.height,
+                    left: 300 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('LE-5', context, leMessage),
                   ),
                   Positioned(
-                    bottom: 800 / 800 * MediaQuery.of(context).size.height,
-                    right: 1100 / 1280 * MediaQuery.of(context).size.width,
+                    bottom: 370 / 800 * MediaQuery.of(context).size.height,
+                    right: 650 / 1280 * MediaQuery.of(context).size.width,
                     child:
                         iconInteractor('Banheiros', context, banheiroMessage),
                   ),
                   Positioned(
-                    bottom: 720 / 800 * MediaQuery.of(context).size.height,
-                    right: 200 / 1280 * MediaQuery.of(context).size.width,
+                    bottom: 350 / 800 * MediaQuery.of(context).size.height,
+                    right: 120 / 1280 * MediaQuery.of(context).size.width,
                     child:
                         iconInteractor('Banheiros', context, banheiroMessage),
                   ),
                   Positioned(
-                    bottom: 400 / 800 * MediaQuery.of(context).size.height,
-                    left: 350 / 1280 * MediaQuery.of(context).size.width,
+                    bottom: 200 / 800 * MediaQuery.of(context).size.height,
+                    left: 160 / 1280 * MediaQuery.of(context).size.width,
                     child:
                         iconInteractor('Auditório', context, auditorioMessage),
                   ),
                   Positioned(
-                    top: 720 / 800 * MediaQuery.of(context).size.height,
-                    right: 170 / 1280 * MediaQuery.of(context).size.width,
+                    top: 330 / 800 * MediaQuery.of(context).size.height,
+                    right: 100 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('Copa', context, copaMessage),
                   ),
                   Positioned(
-                    top: 400 / 800 * MediaQuery.of(context).size.height,
-                    left: 1200 / 1280 * MediaQuery.of(context).size.width,
+                    top: 180 / 800 * MediaQuery.of(context).size.height,
+                    left: 650 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('Recepção', context, recepcaoMessage),
                   ),
                   Positioned(
-                    top: 510 / 800 * MediaQuery.of(context).size.height,
-                    left: 990 / 1280 * MediaQuery.of(context).size.width,
+                    top: 220 / 800 * MediaQuery.of(context).size.height,
+                    left: 545 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('Home', context, saguaoMessage),
                   ),
                   Positioned(
-                    bottom: 400 / 800 * MediaQuery.of(context).size.height,
-                    left: 1020 / 1280 * MediaQuery.of(context).size.width,
+                    bottom: 200 / 800 * MediaQuery.of(context).size.height,
+                    left: 545 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('PPG-CC4', context, ppgMessage),
                   ),
                   Positioned(
-                    bottom: 500 / 800 * MediaQuery.of(context).size.height,
-                    left: 1250 / 1280 * MediaQuery.of(context).size.width,
+                    bottom: 225 / 800 * MediaQuery.of(context).size.height,
+                    left: 680 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('Suporte', context, apoioMessage),
                   ),
                   Positioned(
-                    top: 550 / 800 * MediaQuery.of(context).size.height,
-                    left: 1150 / 1280 * MediaQuery.of(context).size.width,
+                    top: 260 / 800 * MediaQuery.of(context).size.height,
+                    left: 620 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('Chefia', context, chefiaMessage),
                   ),
                   Positioned(
-                    top: 570 / 800 * MediaQuery.of(context).size.height,
-                    left: 1450 / 1280 * MediaQuery.of(context).size.width,
+                    top: 260 / 800 * MediaQuery.of(context).size.height,
+                    left: 770 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('Reuniões', context, reunioesMessage),
                   )
                 ],
