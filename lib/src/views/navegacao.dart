@@ -42,6 +42,7 @@ class NavegacaoPage extends StatelessWidget {
         child: FilledButton(
           onPressed: () {
             fetchNavigationResponse(removeDiacritics(texto));
+            Navigator.pop(context);
           },
           child: Text('Ir até $texto'),
         ),
