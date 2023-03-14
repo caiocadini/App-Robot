@@ -59,8 +59,8 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    initializeDateFormatting('pt_BR').then((value) => debugPrint(Intl.getCurrentLocale()));
-    
+    initializeDateFormatting('pt_BR')
+        .then((value) => debugPrint(Intl.getCurrentLocale()));
   }
 
   @override
@@ -80,17 +80,20 @@ class _HomePageState extends State<HomePage> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: const [
-                        Text('Olá, visitante!',
+                        Text(
+                          'Olá, visitante!',
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 30),
                         ),
                         Text(
                           'Com o que posso te ajudar?',
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(fontWeight: FontWeight.w300),
-                        ),],
+                        ),
+                      ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -113,31 +116,17 @@ class _HomePageState extends State<HomePage> {
                             )
                           },
                         ),
-                        ElevatedCard(
-                          cardText: 'Xadrez',
-                          onTap: () => debugPrint('Xadrez'),
-                        ),
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         ElevatedCard(
-                          cardText: 'Grupos de Extensão',
-                          onTap: () => debugPrint('Grupos de Extensão'),
-                        ),
-                        
-                        ElevatedCard(
                           cardText: 'Informações',
                           onTap: () => Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: (context) => const InfoPage()),
-                            ),
-                        ),
-                        
-                        ElevatedCard(
-                          cardText: 'Configurações',
-                          onTap: () => debugPrint('Configurações'),
+                            MaterialPageRoute(
+                                builder: (context) => const InfoPage()),
+                          ),
                         ),
                       ],
                     ),
