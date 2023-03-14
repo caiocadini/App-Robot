@@ -55,7 +55,7 @@ class NavegacaoPage extends StatelessWidget {
               builder: (BuildContext context) {
                 return SizedBox(
                     height: 400 / 800 * MediaQuery.of(context).size.height,
-                    width: 350 / 1980 * MediaQuery.of(context).size.width,
+                    width: 350 / 1280 * MediaQuery.of(context).size.width,
                     child: ListView(
                       shrinkWrap: true,
                       children: [
@@ -76,7 +76,7 @@ class NavegacaoPage extends StatelessWidget {
         child: Icon(
           Icons.location_on,
           color: Colors.black,
-          size: 100 / 1980 * MediaQuery.of(context).size.width,
+          size: 100 / 1280 * MediaQuery.of(context).size.width,
         ));
   }
 
@@ -110,96 +110,96 @@ class NavegacaoPage extends StatelessWidget {
                   Image(
                       image: ResizeImage(AssetImage(imgMap),
                           width:
-                              (2384 / 1980 * MediaQuery.of(context).size.width)
+                              (2384 / 1280 * MediaQuery.of(context).size.width)
                                   .round(),
                           height:
                               (1684 / 800 * MediaQuery.of(context).size.height)
                                   .round())),
                   Positioned(
                     top: 600 / 800 * MediaQuery.of(context).size.height,
-                    right: 170 / 1980 * MediaQuery.of(context).size.width,
+                    right: 170 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('Lig', context, ligMessage),
                   ),
                   Positioned(
                       bottom: 400 / 800 * MediaQuery.of(context).size.height,
-                      left: 800 / 1980 * MediaQuery.of(context).size.width,
+                      left: 800 / 1280 * MediaQuery.of(context).size.width,
                       child: iconInteractor('Maker', context, makerMessage)),
                   Positioned(
                     bottom: 400 / 800 * MediaQuery.of(context).size.height,
-                    right: 240 / 1980 * MediaQuery.of(context).size.width,
+                    right: 240 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('LE-1', context, leMessage),
                   ),
                   Positioned(
                     bottom: 400 / 800 * MediaQuery.of(context).size.height,
-                    right: 450 / 1980 * MediaQuery.of(context).size.width,
+                    right: 450 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('LE-2', context, leMessage),
                   ),
                   Positioned(
                     bottom: 400 / 800 * MediaQuery.of(context).size.height,
-                    right: 660 / 1980 * MediaQuery.of(context).size.width,
+                    right: 660 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('LE-3', context, leMessage),
                   ),
                   Positioned(
                     bottom: 400 / 800 * MediaQuery.of(context).size.height,
-                    right: 860 / 1980 * MediaQuery.of(context).size.width,
+                    right: 860 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('LE-4', context, leMessage),
                   ),
                   Positioned(
                     bottom: 400 / 800 * MediaQuery.of(context).size.height,
-                    left: 550 / 1980 * MediaQuery.of(context).size.width,
+                    left: 550 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('LE-5', context, leMessage),
                   ),
                   Positioned(
                     bottom: 800 / 800 * MediaQuery.of(context).size.height,
-                    right: 1100 / 1980 * MediaQuery.of(context).size.width,
+                    right: 1100 / 1280 * MediaQuery.of(context).size.width,
                     child:
                         iconInteractor('Banheiros', context, banheiroMessage),
                   ),
                   Positioned(
                     bottom: 720 / 800 * MediaQuery.of(context).size.height,
-                    right: 200 / 1980 * MediaQuery.of(context).size.width,
+                    right: 200 / 1280 * MediaQuery.of(context).size.width,
                     child:
                         iconInteractor('Banheiros', context, banheiroMessage),
                   ),
                   Positioned(
                     bottom: 400 / 800 * MediaQuery.of(context).size.height,
-                    left: 140 / 800 * MediaQuery.of(context).size.width,
+                    left: 350 / 1280 * MediaQuery.of(context).size.width,
                     child:
                         iconInteractor('Auditorio', context, auditorioMessage),
                   ),
                   Positioned(
-                    top: 760 / 800 * MediaQuery.of(context).size.height,
-                    right: 170 / 1980 * MediaQuery.of(context).size.width,
+                    top: 720 / 800 * MediaQuery.of(context).size.height,
+                    right: 170 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('Copa', context, copaMessage),
                   ),
                   Positioned(
                     top: 400 / 800 * MediaQuery.of(context).size.height,
-                    left: 1200 / 1980 * MediaQuery.of(context).size.width,
+                    left: 1200 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('Recepcao', context, recepcaoMessage),
                   ),
                   Positioned(
                     top: 510 / 800 * MediaQuery.of(context).size.height,
-                    left: 990 / 1980 * MediaQuery.of(context).size.width,
+                    left: 990 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('Home', context, saguaoMessage),
                   ),
                   Positioned(
                     bottom: 400 / 800 * MediaQuery.of(context).size.height,
-                    left: 1020 / 1980 * MediaQuery.of(context).size.width,
+                    left: 1020 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('PPG-CC4', context, ppgMessage),
                   ),
                   Positioned(
                     bottom: 500 / 800 * MediaQuery.of(context).size.height,
-                    left: 1250 / 1980 * MediaQuery.of(context).size.width,
+                    left: 1250 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('Suporte', context, apoioMessage),
                   ),
                   Positioned(
-                    top: 600 / 800 * MediaQuery.of(context).size.height,
-                    left: 1150 / 1980 * MediaQuery.of(context).size.width,
+                    top: 550 / 800 * MediaQuery.of(context).size.height,
+                    left: 1150 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('Chefia', context, chefiaMessage),
                   ),
                   Positioned(
                     top: 570 / 800 * MediaQuery.of(context).size.height,
-                    left: 1450 / 1980 * MediaQuery.of(context).size.width,
+                    left: 1450 / 1280 * MediaQuery.of(context).size.width,
                     child: iconInteractor('Reunioes', context, reunioesMessage),
                   )
                 ],
