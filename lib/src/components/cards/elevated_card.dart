@@ -7,6 +7,7 @@ class ElevatedCard extends StatelessWidget {
   final VoidCallback? onTap;
   final double? height;
   final double? width;
+  final bool? bigText;
   
   const ElevatedCard({
     super.key, 
@@ -16,6 +17,7 @@ class ElevatedCard extends StatelessWidget {
     this.onTap,
     this.height = 80,
     this.width = 160,
+    this.bigText = false,
   });
 
   @override
@@ -23,6 +25,7 @@ class ElevatedCard extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         child: SizedBox(
           width: width,
           height: height,
@@ -36,6 +39,7 @@ class ElevatedCard extends StatelessWidget {
                     title ?? '',
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
+                      fontSize: 16
                     )),
                 if(subTitle != null)
                   Text(
@@ -44,11 +48,17 @@ class ElevatedCard extends StatelessWidget {
                       fontWeight: FontWeight.normal,
                       fontStyle: FontStyle.italic
                     )),
-                // if(title != null)
-                //   const Divider(),
                 if(cardText != null)
                 Center(
-                  child: Text(cardText??'')
+                  child: Text(
+                    cardText??'',
+                    textAlign: TextAlign.center,
+                    style: bigText! ? const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Raleway'
+                    ) : const TextStyle() ,
+                  )
                 )
               ]
             ),

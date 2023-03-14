@@ -37,7 +37,7 @@ class NavegacaoPage extends StatelessWidget {
         onTap: () {
           fetchNavigationResponse(texto);
         },
-        child: ElevatedButton(
+        child: FilledButton(
           onPressed: () {
             fetchNavigationResponse(texto);
           },
@@ -50,36 +50,38 @@ class NavegacaoPage extends StatelessWidget {
   Widget iconInteractor(String texto, BuildContext context, String message) {
     return InkWell(
         onTap: () {
-          showModalBottomSheet(
+            showDialog<String>(
               context: context,
-              builder: (BuildContext context) {
-                return SizedBox(
-                    height: 400 / 800 * MediaQuery.of(context).size.height,
-                    width: 350 / 1280 * MediaQuery.of(context).size.width,
-                    child: Scrollbar(
-                      child: ListView(
-                        shrinkWrap: true,
-                        children: [
-                          Align(
-                              alignment: Alignment.topCenter,
-                              child: Text(
-                                texto.toUpperCase(),
-                                style: const TextStyle(fontSize: 25),
-                              )),
-                          Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: SizedBox(child: Text(message)),
-                          ),
-                          boxCreation(texto, context),
-                          ElevatedButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: const Text('Voltar'))
-                        ],
+              builder: (BuildContext context) => Dialog(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        texto.toUpperCase(),
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold
+                        ),
                       ),
-                    ));
-              });
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: SizedBox(child: Text(message)),
+                      ),
+                      boxCreation(texto, context),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text('Voltar'),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
         },
         child: Icon(
           Icons.location_on,
@@ -102,7 +104,12 @@ class NavegacaoPage extends StatelessWidget {
                   onPressed: () => Navigator.of(context).maybePop(context),
                   icon: const Icon(Icons.arrow_back, color: Colors.white)),
               backgroundColor: Colors.white.withOpacity(0),
-              title: const Text('EXPLORAR O DC'),
+              title: const Text('Explorar o DC',
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold
+                ),
+              ),
               centerTitle: true,
               bottom: const PreferredSize(
                 preferredSize: Size.zero,
@@ -126,7 +133,7 @@ class NavegacaoPage extends StatelessWidget {
                   Positioned(
                     top: 600 / 800 * MediaQuery.of(context).size.height,
                     right: 170 / 1280 * MediaQuery.of(context).size.width,
-                    child: iconInteractor('Lig', context, ligMessage),
+                    child: iconInteractor('LIG', context, ligMessage),
                   ),
                   Positioned(
                       bottom: 400 / 800 * MediaQuery.of(context).size.height,
@@ -173,7 +180,7 @@ class NavegacaoPage extends StatelessWidget {
                     bottom: 400 / 800 * MediaQuery.of(context).size.height,
                     left: 350 / 1280 * MediaQuery.of(context).size.width,
                     child:
-                        iconInteractor('Auditorio', context, auditorioMessage),
+                        iconInteractor('Auditório', context, auditorioMessage),
                   ),
                   Positioned(
                     top: 720 / 800 * MediaQuery.of(context).size.height,
@@ -183,7 +190,7 @@ class NavegacaoPage extends StatelessWidget {
                   Positioned(
                     top: 400 / 800 * MediaQuery.of(context).size.height,
                     left: 1200 / 1280 * MediaQuery.of(context).size.width,
-                    child: iconInteractor('Recepcao', context, recepcaoMessage),
+                    child: iconInteractor('Recepção', context, recepcaoMessage),
                   ),
                   Positioned(
                     top: 510 / 800 * MediaQuery.of(context).size.height,
@@ -208,7 +215,7 @@ class NavegacaoPage extends StatelessWidget {
                   Positioned(
                     top: 570 / 800 * MediaQuery.of(context).size.height,
                     left: 1450 / 1280 * MediaQuery.of(context).size.width,
-                    child: iconInteractor('Reunioes', context, reunioesMessage),
+                    child: iconInteractor('Reuniões', context, reunioesMessage),
                   )
                 ],
               ),

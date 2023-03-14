@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sizer/sizer.dart';
-import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 import 'package:app_robo/src/views/navegacao.dart';
@@ -59,8 +58,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    initializeDateFormatting('pt_BR')
-        .then((value) => debugPrint(Intl.getCurrentLocale()));
+    initializeDateFormatting('pt_BR');
   }
 
   @override
@@ -70,6 +68,7 @@ class _HomePageState extends State<HomePage> {
           image: DecorationImage(
               image: AssetImage(imgBackground), fit: BoxFit.cover),
         ),
+        // color: Colors.white10,
         child: Scaffold(
             backgroundColor: Colors.transparent,
             body: Align(
@@ -81,70 +80,64 @@ class _HomePageState extends State<HomePage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: const [
                         Text(
-                          'Olá, visitante!',
+                          'Bem vindo ao DC!',
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 30),
+                            fontWeight: FontWeight.bold, 
+                            fontSize: 32
+                          ),
                         ),
                         Text(
                           'Com o que posso te ajudar?',
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(fontWeight: FontWeight.w300),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        ElevatedCard(
-                          cardText: 'Eventos',
-                          onTap: () => {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: (context) => const CalendarioPage()),
-                            )
-                          },
-                        ),
-                        ElevatedCard(
-                          cardText: 'Explorar o DC',
-                          onTap: () => {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                  builder: (context) => const NavegacaoPage()),
-                            )
-                          },
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        ElevatedCard(
-                          cardText: 'Informações',
-                          onTap: () => Navigator.of(context).push(
-                            MaterialPageRoute(
-                                builder: (context) => const InfoPage()),
+                          style: TextStyle(
+                            fontWeight: FontWeight.w300,
+                            fontSize: 18
                           ),
                         ),
                       ],
                     ),
-
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.center,
-                    //   children: [
-                    //     FloatingActionButton.extended(
-                    //       onPressed: () => debugPrint('Ver mais'),
-                    //       label: const Text('Ver mais'),
-                    //       icon: const Icon(Icons.expand_more, size: 14),
-                    //       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(200))),
-                    //       extendedTextStyle: const TextStyle(
-                    //         fontSize: 12
-                    //       ),
-                    //     )
-                    //   ],
-                    // )
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        ElevatedCard(
+                          height: 140,
+                          width: 180,
+                          cardText: 'Eventos',
+                          bigText: true,
+                          onTap: () => {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const CalendarioPage()),
+                            )
+                          },
+                        ),
+                        ElevatedCard(
+                          height: 140,
+                          width: 180,
+                          cardText: 'Explorar o DC',
+                          bigText: true,
+                          onTap: () => {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const NavegacaoPage()),
+                            )
+                          },
+                        ),
+                        ElevatedCard(
+                          height: 140,
+                          width: 180,
+                          cardText: 'Informações',
+                          bigText: true,
+                          onTap: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const InfoPage()),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ))));
   }
