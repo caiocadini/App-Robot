@@ -88,25 +88,23 @@ class NavegacaoPage extends StatelessWidget {
               image: AssetImage(imgBackground), fit: BoxFit.cover),
         ),
         child: Scaffold(
-          backgroundColor: Colors.transparent,
-          appBar: AppBar(
-            leading: IconButton(
-                onPressed: () => Navigator.of(context).maybePop(context),
-                icon: const Icon(Icons.arrow_back, color: Colors.white)),
-            backgroundColor: Colors.white.withOpacity(0),
-            title: const Text('EXPLORAR O DC'),
-            centerTitle: true,
-            bottom: const PreferredSize(
-              preferredSize: Size.zero,
-              child: Text(
-                  'Selecione algum marcador para ver mais informações sobre o local'),
+            backgroundColor: Colors.transparent,
+            appBar: AppBar(
+              leading: IconButton(
+                  onPressed: () => Navigator.of(context).maybePop(context),
+                  icon: const Icon(Icons.arrow_back, color: Colors.white)),
+              backgroundColor: Colors.white.withOpacity(0),
+              title: const Text('EXPLORAR O DC'),
+              centerTitle: true,
+              bottom: const PreferredSize(
+                preferredSize: Size.zero,
+                child: Text(
+                    'Selecione algum marcador para ver mais informações sobre o local'),
+              ),
+              elevation: 0.0,
             ),
-            elevation: 0.0,
-          ),
-          body: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
+            body: InteractiveViewer(
+              constrained: false,
               child: Stack(
                 children: [
                   Image(
@@ -206,8 +204,6 @@ class NavegacaoPage extends StatelessWidget {
                   )
                 ],
               ),
-            ),
-          ),
-        ));
+            )));
   }
 }
