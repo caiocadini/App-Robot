@@ -15,7 +15,7 @@ class Locais {
 //Pedir para a API uma lista com todos os locais possíveis de se visitar no DC
 Future<Locais> fetchLocais() async {
   final response =
-      await http.get(Uri.parse('http://192.168.0.200:5000/ros/goal'));
+      await http.get(Uri.parse('http://192.168.1.100:5000/ros/goal'));
 
   final respostaJson = jsonDecode(response.body);
   final retorno = Locais.fromJson(respostaJson);
@@ -41,7 +41,7 @@ class Resposta {
 //Retorno da resposta para navegação
 Future<Resposta> fetchNavigationResponse(String local) async {
   final response =
-      await http.get(Uri.parse('http://192.168.0.200:5000/ros/goTo/$local'));
+      await http.get(Uri.parse('http://192.168.1.100:5000/ros/goTo/$local'));
 
   final jsonResponse = jsonDecode(response.body);
   final resultado = Resposta.fromJson(jsonResponse);
