@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.indigo,
           useMaterial3: true,
         ),
-        themeMode: ThemeMode.system,
+        themeMode: ThemeMode.dark,
         debugShowCheckedModeBanner: false,
         home: const HomePage(title: 'Flutter Demo Home Page'),
       );
